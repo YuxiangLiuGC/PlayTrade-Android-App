@@ -218,7 +218,6 @@ public class UpdateProfile extends AppCompatActivity {
             }
         });
 
-        //从相册中选择头像
         ivPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
