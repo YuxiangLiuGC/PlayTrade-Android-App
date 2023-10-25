@@ -33,7 +33,6 @@ public class UccOpenHelper extends SQLiteOpenHelper {
 
     private static final String DROP_BOOK = "drop table if exists Book";
     private static final String DROP_Category = "drop table if exists Category";
-    //当把 version 修改后 onUpgrade 将会执行
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DROP_BOOK);
