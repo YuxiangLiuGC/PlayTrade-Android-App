@@ -49,7 +49,7 @@ public class UpdateProfile extends AppCompatActivity {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference reference;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private RequestOptions headerRO = new RequestOptions().circleCrop();//圆角变换
+    private RequestOptions headerRO = new RequestOptions().circleCrop();
 
     private ImageView ivPhoto;
     private TextView emailTextView, nameTextView;
@@ -249,9 +249,7 @@ public class UpdateProfile extends AppCompatActivity {
                             // onResult Callback
                             LocalMedia media = result.get(i);
                             String path;
-                            // 压缩过,或者裁剪同时压缩过,以最终压缩过图片为准
                             boolean compressPath = media.isCompressed() || (media.isCut() && media.isCompressed());
-                            // 裁剪过
                             boolean isCutPath = media.isCut() && !media.isCompressed();
                             if (isCutPath) {
                                 path = media.getCutPath();
@@ -261,7 +259,6 @@ public class UpdateProfile extends AppCompatActivity {
                                 // AndroidQ特有path
                                 path = media.getAndroidQToPath();
                             } else if (!TextUtils.isEmpty(media.getRealPath())) {
-                                // 原图
                                 path = media.getRealPath();
                             } else {
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
